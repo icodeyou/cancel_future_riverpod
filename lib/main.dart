@@ -187,6 +187,11 @@ class MainController extends _$MainController {
 
   @override
   Future<void> build() async {
+
+    ref.onCancel(() {
+      ref.read(futureControllerProvider.notifier).cancel();
+    });
+
     await Future.delayed(Duration(seconds: 3));
     ref.read(futureControllerProvider.notifier).futureTask();
   }
