@@ -6,7 +6,7 @@ part of 'main.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$futureControllerHash() => r'fcc6680dbd558b75848b93687127e46afea772d9';
+String _$futureControllerHash() => r'1967cdf89f302efbff7846ad872520ecd13f7379';
 
 /// See also [FutureController].
 @ProviderFor(FutureController)
@@ -22,12 +22,12 @@ final futureControllerProvider =
 );
 
 typedef _$FutureController = AutoDisposeNotifier<void>;
-String _$mainControllerHash() => r'465d82e98fcf98df64f35fd1c2246821ae12c778';
+String _$mainControllerHash() => r'82dc9602ae1198798455f294872a6205aa6dedf7';
 
 /// See also [MainController].
 @ProviderFor(MainController)
 final mainControllerProvider =
-    AutoDisposeAsyncNotifierProvider<MainController, void>.internal(
+    AutoDisposeAsyncNotifierProvider<MainController, String>.internal(
   MainController.new,
   name: r'mainControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -37,6 +37,6 @@ final mainControllerProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$MainController = AutoDisposeAsyncNotifier<void>;
+typedef _$MainController = AutoDisposeAsyncNotifier<String>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

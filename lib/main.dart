@@ -159,18 +159,24 @@ class SecondScreen extends ConsumerWidget {
 class FutureController extends _$FutureController {
   bool cancelTask = false;
 
+  String animal = 'lion';
+
   @override
   void build() {
-    return;
+    final animalAsync = ref.watch(mainControllerProvider);
+    if (animalAsync.value != null) {
+      animal = animalAsync.value!;
+    }
   }
 
   Future<void> futureTask() async {
     for (int i = 0; i < 10; i++) {
       if (ref.read(_isCancelled)) {
+        // PROBLEME : ON NE PASSE PAS ICI QUAND ON REVIENT SUR l'ECRAN 1
         break;
       }
       await Future.delayed(Duration(seconds: 1));
-      print('Second : $i');
+      print('$animal : $i');
     }
   }
 
@@ -179,14 +185,16 @@ class FutureController extends _$FutureController {
   }
 }
 
-final _isCancelled = StateProvider.autoDispose<bool>((ref) => false);
+// IMPORTANT: J'aimerais que ce soit autodispose, mais comme ca crée un bug, je le laisse comme ca pour l'instant
+final _isCancelled = StateProvider<bool>((ref) => false);
+//final _isCancelled = StateProvider.autodispose<bool>((ref) => false);
 
 @riverpod
 class MainController extends _$MainController {
   bool cancelTask = false;
 
   @override
-  Future<void> build() async {
+  Future<String> build() async {
 
     ref.onCancel(() {
       ref.read(futureControllerProvider.notifier).cancel();
@@ -194,19 +202,6 @@ class MainController extends _$MainController {
 
     await Future.delayed(Duration(seconds: 1));
     ref.read(futureControllerProvider.notifier).futureTask();
-  }
-
-  Future<void> futureTask() async {
-    for (int i = 0; i < 10; i++) {
-      if (ref.read(_isCancelled)) {
-        break;
-      }
-      await Future.delayed(Duration(seconds: 1));
-      print('Second : $i');
-    }
-  }
-
-  Future<void> cancel() async {
-    ref.read(_isCancelled.notifier).state = true;
+    return 'canard';
   }
 }
