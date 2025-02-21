@@ -192,7 +192,7 @@ class MainController extends _$MainController {
       ref.read(futureControllerProvider.notifier).cancel();
     });
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
     ref.read(futureControllerProvider.notifier).futureTask();
   }
 

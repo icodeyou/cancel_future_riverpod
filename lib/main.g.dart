@@ -22,7 +22,7 @@ final futureControllerProvider =
 );
 
 typedef _$FutureController = AutoDisposeNotifier<void>;
-String _$mainControllerHash() => r'7ecfb5a529ea2ee6be8bbc165e8e89a8debe056c';
+String _$mainControllerHash() => r'465d82e98fcf98df64f35fd1c2246821ae12c778';
 
 /// See also [MainController].
 @ProviderFor(MainController)
